@@ -21,8 +21,8 @@
             content: '';
             position: absolute;
             left: 18px;
-            top: 32px;
-            height: calc(100% - 32px);
+            top: 40px;
+            height: calc(100% - 40px);
             width: 2px;
             background-color: #3b82f6;
         }
@@ -45,6 +45,10 @@
         .active::after {
             width: 100%;
         }
+        .mobile-menu-link:hover {
+            background-color: #eff6ff;
+            color: #1e40af;
+        }
         .profile-image {
             border: 5px solid white;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -60,6 +64,13 @@
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #3b82f6;
+            color: white;
         }
         .section-title {
             position: relative;
@@ -102,11 +113,11 @@
         </div>
         <!-- Mobile menu -->
         <div class="md:hidden hidden bg-white w-full py-2 px-4 shadow-lg" id="mobile-menu">
-            <a href="#home" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition">Home</a>
-            <a href="#about" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition">About</a>
-            <a href="#experience" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition">Experience</a>
-            <a href="#skills" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition">Skills</a>
-            <a href="#contact" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition">Contact</a>
+            <a href="#home" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition mobile-menu-link">Home</a>
+            <a href="#about" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition mobile-menu-link">About</a>
+            <a href="#experience" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition mobile-menu-link">Experience</a>
+            <a href="#skills" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition mobile-menu-link">Skills</a>
+            <a href="#contact" class="block py-3 px-4 hover:bg-blue-50 rounded-lg font-medium transition mobile-menu-link">Contact</a>
         </div>
     </nav>
 
@@ -582,7 +593,7 @@
             <div class="border-t border-blue-800 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-blue-200 mb-4 md:mb-0">&copy; 2024 Paulo Viruet. All rights reserved.</p>
                 <div class="flex space-x-4">
-                    <a href="#" class="text-blue-200 hover:text-white transition duration-300">
+                    <a href="https://www.linkedin.com/in/paulo-viruet/" class="text-blue-200 hover:text-white transition duration-300">
                         <i class="fab fa-linkedin-in text-xl"></i>
                     </a>
               
