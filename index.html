@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Professional resume portfolio for Paulo Viruet, Security Officer in Saint Paul, Minnesota." />
+  <meta name="description" content="Paulo Viruet - Professional Security Officer portfolio and resume website." />
   <title>Paulo Viruet | Professional Security Officer</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
       --blue-dark: #1e3a8a;
       --blue-main: #2563eb;
+      --blue-light: #60a5fa;
       --text-dark: #111827;
-      --muted: #6b7280;
     }
 
     html {
@@ -24,81 +24,59 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f8fafc;
+      color: var(--text-dark);
     }
 
     .hero-gradient {
       background:
-        radial-gradient(circle at top right, rgba(96, 165, 250, .32), transparent 35%),
-        linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%);
+        radial-gradient(circle at top right, rgba(147,197,253,.35), transparent 35%),
+        linear-gradient(135deg, #1e3a8a 0%, #1e40af 45%, #2563eb 100%);
     }
 
-    /* Navbar contrast fix */
-    .site-nav {
+    .nav-glass {
       background: rgba(255, 255, 255, .98);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(15, 23, 42, .08);
+      border-bottom: 1px solid rgba(37, 99, 235, .16);
       box-shadow: 0 8px 24px rgba(15, 23, 42, .12);
     }
 
     .nav-link {
-      position: relative;
       color: #111827;
       font-weight: 800;
-      letter-spacing: .01em;
-      padding-bottom: 6px;
-      transition: color .25s ease;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 3px;
-      width: 0;
+      position: relative;
+      padding: .45rem .8rem;
       border-radius: 999px;
-      background: #2563eb;
-      transition: width .25s ease;
+      transition: all .25s ease;
     }
 
     .nav-link:hover,
     .nav-link.active {
-      color: #1d4ed8;
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 100%;
+      color: #fff;
+      background: #2563eb;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, .28);
     }
 
     .mobile-menu-link {
       color: #111827;
       font-weight: 800;
-      transition: background .2s ease, color .2s ease;
+      transition: all .25s ease;
     }
 
     .mobile-menu-link:hover {
       background: #eff6ff;
-      color: #1d4ed8;
+      color: var(--blue-dark);
+      transform: translateX(3px);
     }
 
     .profile-image {
-      border: 5px solid #fff;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, .24);
-      background: #e5e7eb;
-    }
-
-    .profile-image img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      border: 5px solid white;
+      box-shadow: 0 22px 50px rgba(15, 23, 42, .28);
     }
 
     .floating-button {
-      animation: float 3s ease-in-out infinite;
+      animation: float 3.3s ease-in-out infinite;
     }
 
     @keyframes float {
@@ -114,72 +92,80 @@
     .section-title::after {
       content: "";
       position: absolute;
-      width: 50%;
+      width: 54%;
       height: 4px;
+      left: 23%;
       bottom: -10px;
-      left: 25%;
-      background: #2563eb;
+      background: var(--blue-main);
       border-radius: 999px;
     }
 
     .card-hover {
-      transition: transform .25s ease, box-shadow .25s ease;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
 
     .card-hover:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 35px rgba(15, 23, 42, .12);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, .12);
     }
 
-    .timeline-item::after {
+    .timeline-item:not(:last-child)::after {
       content: "";
       position: absolute;
       left: 18px;
       top: 40px;
+      height: calc(100% - 40px);
       width: 2px;
-      height: calc(100% + 20px);
-      background: #3b82f6;
-    }
-
-    .timeline-item:last-child::after {
-      display: none;
+      background: linear-gradient(#2563eb, #93c5fd);
     }
 
     .skill-pill {
-      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+      transition: all .25s ease;
     }
 
     .skill-pill:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(37, 99, 235, .20);
       background: #2563eb;
-      color: #fff;
+      color: white;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, .25);
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .nav-link {
+        padding: .4rem .65rem;
       }
     }
   </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-900">
+
   <!-- Navigation -->
-  <nav class="site-nav fixed top-0 left-0 z-50 w-full">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between py-4">
-        <a href="#home" class="flex items-center" aria-label="Go to home section">
-          <div class="mr-3 flex h-11 w-11 items-center justify-center rounded-full bg-blue-800 text-white shadow-md">
-            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+  <nav class="fixed top-0 left-0 w-full z-50 nav-glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <a href="#home" class="flex items-center gap-3" aria-label="Go to home section">
+          <div class="bg-blue-800 w-11 h-11 rounded-full flex items-center justify-center shadow-md">
+            <i class="fas fa-shield-alt text-white text-lg"></i>
           </div>
-          <span class="text-2xl font-black text-blue-900">Paulo Viruet</span>
+          <div>
+            <div class="text-2xl font-black text-blue-900 leading-tight">Paulo Viruet</div>
+            <div class="text-xs font-bold text-blue-600 uppercase tracking-wide">Security Officer</div>
+          </div>
         </a>
 
-        <div class="hidden items-center space-x-8 md:flex">
+        <div class="hidden md:flex items-center space-x-2">
           <a href="#home" class="nav-link active">Home</a>
           <a href="#about" class="nav-link">About</a>
           <a href="#experience" class="nav-link">Experience</a>
@@ -187,131 +173,166 @@
           <a href="#contact" class="nav-link">Contact</a>
         </div>
 
-        <button id="menu-toggle" class="rounded-lg p-2 text-blue-900 md:hidden" aria-label="Open navigation menu" aria-expanded="false">
-          <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
+        <button id="menu-toggle" class="md:hidden text-blue-900 text-2xl focus:outline-none" aria-label="Open navigation menu">
+          <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden border-t border-gray-100 bg-white px-4 py-3 shadow-lg md:hidden">
-      <a href="#home" class="mobile-menu-link block rounded-lg px-4 py-3">Home</a>
-      <a href="#about" class="mobile-menu-link block rounded-lg px-4 py-3">About</a>
-      <a href="#experience" class="mobile-menu-link block rounded-lg px-4 py-3">Experience</a>
-      <a href="#skills" class="mobile-menu-link block rounded-lg px-4 py-3">Skills</a>
-      <a href="#contact" class="mobile-menu-link block rounded-lg px-4 py-3">Contact</a>
+    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-blue-100 shadow-lg px-4 pb-4">
+      <a href="#home" class="mobile-menu-link block py-3 px-4 rounded-lg">Home</a>
+      <a href="#about" class="mobile-menu-link block py-3 px-4 rounded-lg">About</a>
+      <a href="#experience" class="mobile-menu-link block py-3 px-4 rounded-lg">Experience</a>
+      <a href="#skills" class="mobile-menu-link block py-3 px-4 rounded-lg">Skills</a>
+      <a href="#contact" class="mobile-menu-link block py-3 px-4 rounded-lg">Contact</a>
     </div>
   </nav>
 
   <!-- Hero -->
   <section id="home" class="hero-gradient pt-32 pb-20 text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col items-center gap-12 md:flex-row">
-        <div class="md:w-1/2">
-          <p class="mb-4 inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-bold backdrop-blur">
-            Security Officer • Bilingual • Emergency Response
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2 fade-in">
+          <span class="inline-flex items-center gap-2 bg-white/15 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-bold mb-5">
+            <i class="fas fa-circle text-green-300 text-xs"></i>
+            Available for Security Opportunities
+          </span>
+
+          <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight">Paulo Viruet</h1>
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">Professional Security Officer</h2>
+
+          <p class="text-lg lg:text-xl mb-8 max-w-xl text-blue-50 leading-relaxed">
+            Dedicated and highly vigilant Security Officer with 4+ years of experience ensuring safety in healthcare,
+            residential, corporate, and hospitality settings. Skilled in surveillance, conflict de-escalation,
+            incident response, customer service, and bilingual communication in English and Spanish.
           </p>
-          <h1 class="mb-4 text-4xl font-black leading-tight md:text-5xl lg:text-6xl">Paulo Viruet</h1>
-          <h2 class="mb-6 text-2xl font-bold md:text-3xl">Professional Security Officer</h2>
-          <p class="mb-8 max-w-xl text-lg leading-relaxed text-blue-50 lg:text-xl">
-            Dedicated and highly vigilant Security Officer with 4+ years of experience ensuring safety in healthcare, corporate, residential, and hospitality settings. Proven ability to respond to emergencies, enforce rules, de-escalate conflict, and provide excellent customer service under pressure.
-          </p>
-          <div class="flex flex-col gap-4 sm:flex-row">
-            <a href="#contact" class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-bold text-blue-800 transition hover:bg-blue-50">
-              <i class="fas fa-envelope mr-2" aria-hidden="true"></i> Contact Me
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#contact" class="bg-white text-blue-800 px-8 py-3 rounded-xl font-black hover:bg-blue-50 transition flex items-center justify-center shadow-lg">
+              <i class="fas fa-envelope mr-2"></i> Contact Me
             </a>
-            <a href="#experience" class="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-3 font-bold text-white transition hover:bg-white hover:text-blue-800">
-              <i class="fas fa-briefcase mr-2" aria-hidden="true"></i> My Experience
+            <a href="#experience" class="border-2 border-white text-white px-8 py-3 rounded-xl font-black hover:bg-white hover:text-blue-800 transition flex items-center justify-center">
+              <i class="fas fa-briefcase mr-2"></i> My Experience
             </a>
           </div>
         </div>
 
-        <div class="flex justify-center md:w-1/2">
-          <div class="floating-button relative">
-            <div class="profile-image h-64 w-64 overflow-hidden rounded-full md:h-80 md:w-80">
+        <div class="md:w-1/2 flex justify-center fade-in">
+          <div class="relative floating-button">
+            <div class="profile-image w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden bg-white">
               <img
                 src="https://i.im.ge/2025/04/26/vLpxmM.Screenshot-20250424-210413-Tinder.jpeg"
                 alt="Paulo Viruet"
+                class="w-full h-full object-cover object-center"
                 loading="eager"
-                decoding="async"
               />
             </div>
-            <div class="absolute -bottom-3 -right-3 rounded-full bg-blue-900 px-4 py-2 font-bold text-white shadow-lg">
-              <i class="fas fa-shield-alt mr-2" aria-hidden="true"></i> 4+ Years Experience
+
+            <div class="absolute -bottom-3 -right-3 bg-blue-900 text-white px-4 py-2 rounded-full shadow-xl font-bold">
+              <i class="fas fa-shield-alt mr-2"></i> 4+ Years Experience
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 fade-in">
+        <div class="bg-white/12 border border-white/20 rounded-2xl p-5 text-center">
+          <div class="text-3xl font-black">4+</div>
+          <div class="text-sm text-blue-100 font-semibold">Years Experience</div>
+        </div>
+        <div class="bg-white/12 border border-white/20 rounded-2xl p-5 text-center">
+          <div class="text-3xl font-black">4</div>
+          <div class="text-sm text-blue-100 font-semibold">Security Companies</div>
+        </div>
+        <div class="bg-white/12 border border-white/20 rounded-2xl p-5 text-center">
+          <div class="text-3xl font-black">2</div>
+          <div class="text-sm text-blue-100 font-semibold">Languages</div>
+        </div>
+        <div class="bg-white/12 border border-white/20 rounded-2xl p-5 text-center">
+          <div class="text-3xl font-black">24/7</div>
+          <div class="text-sm text-blue-100 font-semibold">Safety Mindset</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="bg-white py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-14 text-center">
-        <h2 class="section-title text-3xl font-black text-blue-900">About Me</h2>
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-black text-blue-900 section-title">About Me</h2>
       </div>
 
-      <div class="flex flex-col items-center gap-12 lg:flex-row">
-        <div class="flex justify-center lg:w-1/3">
-          <div class="relative">
-            <div class="profile-image h-64 w-64 overflow-hidden rounded-2xl">
-              <img
-                src="https://i.im.ge/2025/04/26/vLpxmM.Screenshot-20250424-210413-Tinder.jpeg"
-                alt="Paulo Viruet professional profile image"
-                loading="lazy"
-                decoding="async"
-              />
+      <div class="flex flex-col lg:flex-row items-start gap-10">
+        <div class="lg:w-1/3 w-full fade-in">
+          <div class="bg-blue-50 rounded-3xl p-8 shadow-xl border border-blue-100 card-hover">
+            <div class="flex items-center mb-6">
+              <div class="bg-blue-700 w-14 h-14 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
+                <i class="fas fa-user-shield text-white text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-black text-blue-900">Professional Profile</h3>
+                <p class="text-gray-600 font-semibold">Dedicated Security Officer</p>
+              </div>
             </div>
-            <div class="absolute -bottom-5 -right-5 rounded-lg bg-blue-600 px-4 py-2 font-bold text-white shadow-lg">
-              <i class="fas fa-language mr-2" aria-hidden="true"></i> Bilingual
+
+            <div class="space-y-4 text-gray-700 font-semibold">
+              <div class="flex items-center"><i class="fas fa-briefcase text-blue-700 w-7"></i><span class="ml-3">4+ Years Experience</span></div>
+              <div class="flex items-center"><i class="fas fa-language text-blue-700 w-7"></i><span class="ml-3">English & Spanish</span></div>
+              <div class="flex items-center"><i class="fas fa-building text-blue-700 w-7"></i><span class="ml-3">Healthcare • Residential • Corporate</span></div>
+              <div class="flex items-center"><i class="fas fa-shield-alt text-blue-700 w-7"></i><span class="ml-3">Emergency Response</span></div>
+              <div class="flex items-center"><i class="fas fa-comments text-blue-700 w-7"></i><span class="ml-3">Conflict De-escalation</span></div>
+              <div class="flex items-center"><i class="fas fa-file-alt text-blue-700 w-7"></i><span class="ml-3">Detailed Report Writing</span></div>
             </div>
           </div>
         </div>
 
-        <div class="lg:w-2/3">
-          <h3 class="mb-4 text-2xl font-black text-gray-900">Dedicated Security Professional</h3>
-          <p class="mb-8 text-lg leading-relaxed text-gray-700">
-            I am a dedicated and highly vigilant Security Officer with 4+ years of experience ensuring safety in healthcare, corporate, residential, and hospitality settings. I am skilled in surveillance, patrol operations, conflict de-escalation, access control, report writing, and emergency response.
+        <div class="lg:w-2/3 fade-in">
+          <h3 class="text-2xl font-black mb-4 text-gray-900">Dedicated Security Professional</h3>
+          <p class="text-lg mb-8 leading-relaxed text-gray-700">
+            I am a dedicated and highly vigilant Security Officer with experience protecting people, property, and businesses
+            in fast-paced environments. I take pride in staying alert, responding calmly under pressure, and helping create a
+            safe and respectful environment for residents, staff, visitors, and clients.
           </p>
 
-          <div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div class="card-hover flex items-start rounded-xl border-l-4 border-blue-800 bg-blue-50 p-5">
-              <div class="mr-4 rounded-full bg-blue-100 p-3 text-blue-800"><i class="fas fa-shield-alt text-xl"></i></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-blue-50 p-5 rounded-2xl border-l-4 border-blue-800 flex items-start card-hover">
+              <div class="bg-blue-100 p-3 rounded-full mr-4"><i class="fas fa-shield-alt text-blue-800 text-xl"></i></div>
               <div>
-                <h4 class="mb-1 text-lg font-bold">Emergency Response</h4>
-                <p class="text-gray-600">Calm and professional response during incidents, emergencies, and high-pressure situations.</p>
+                <h4 class="font-black text-lg mb-1">Emergency Response</h4>
+                <p class="text-gray-600">Calm and professional response to incidents, emergencies, and safety concerns.</p>
               </div>
             </div>
 
-            <div class="card-hover flex items-start rounded-xl border-l-4 border-blue-800 bg-blue-50 p-5">
-              <div class="mr-4 rounded-full bg-blue-100 p-3 text-blue-800"><i class="fas fa-hospital text-xl"></i></div>
+            <div class="bg-blue-50 p-5 rounded-2xl border-l-4 border-blue-800 flex items-start card-hover">
+              <div class="bg-blue-100 p-3 rounded-full mr-4"><i class="fas fa-hospital text-blue-800 text-xl"></i></div>
               <div>
-                <h4 class="mb-1 text-lg font-bold">Healthcare Security</h4>
-                <p class="text-gray-600">Experience securing hospital environments and assisting staff, patients, and visitors.</p>
+                <h4 class="font-black text-lg mb-1">Healthcare Security</h4>
+                <p class="text-gray-600">Experienced in hospital environments, patient safety, patrols, and policy enforcement.</p>
               </div>
             </div>
 
-            <div class="card-hover flex items-start rounded-xl border-l-4 border-blue-800 bg-blue-50 p-5">
-              <div class="mr-4 rounded-full bg-blue-100 p-3 text-blue-800"><i class="fas fa-users text-xl"></i></div>
+            <div class="bg-blue-50 p-5 rounded-2xl border-l-4 border-blue-800 flex items-start card-hover">
+              <div class="bg-blue-100 p-3 rounded-full mr-4"><i class="fas fa-users text-blue-800 text-xl"></i></div>
               <div>
-                <h4 class="mb-1 text-lg font-bold">Team Leadership</h4>
-                <p class="text-gray-600">Supervisor experience with shift coverage, patrol scheduling, and team coordination.</p>
+                <h4 class="font-black text-lg mb-1">Team Leadership</h4>
+                <p class="text-gray-600">Supervisor experience with patrol scheduling, post compliance, and incident documentation.</p>
               </div>
             </div>
 
-            <div class="card-hover flex items-start rounded-xl border-l-4 border-blue-800 bg-blue-50 p-5">
-              <div class="mr-4 rounded-full bg-blue-100 p-3 text-blue-800"><i class="fas fa-comments text-xl"></i></div>
+            <div class="bg-blue-50 p-5 rounded-2xl border-l-4 border-blue-800 flex items-start card-hover">
+              <div class="bg-blue-100 p-3 rounded-full mr-4"><i class="fas fa-language text-blue-800 text-xl"></i></div>
               <div>
-                <h4 class="mb-1 text-lg font-bold">Communication</h4>
-                <p class="text-gray-600">Bilingual in English and Spanish with strong customer service and de-escalation skills.</p>
+                <h4 class="font-black text-lg mb-1">Bilingual Communication</h4>
+                <p class="text-gray-600">Able to communicate professionally in both English and Spanish.</p>
               </div>
             </div>
           </div>
 
-          <div class="card-hover rounded-xl border-l-4 border-blue-800 bg-blue-50 p-6">
-            <div class="mb-3 flex items-center">
-              <i class="fas fa-graduation-cap mr-3 text-xl text-blue-800"></i>
-              <h4 class="text-lg font-black text-blue-900">Education</h4>
+          <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-800 card-hover">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-graduation-cap text-blue-800 text-xl mr-3"></i>
+              <h4 class="font-black text-blue-900 text-lg">Education</h4>
             </div>
             <p class="font-bold">Associate's Degree - Office Administration</p>
             <p class="text-sm text-gray-600">Arecibo Job Corps – Arecibo, PR | Graduated January 2024</p>
@@ -322,180 +343,181 @@
   </section>
 
   <!-- Experience -->
-  <section id="experience" class="bg-gray-50 py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-14 text-center">
-        <h2 class="section-title text-3xl font-black text-blue-900">Professional Experience</h2>
+  <section id="experience" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-black text-blue-900 section-title">Professional Experience</h2>
       </div>
 
       <div class="space-y-10">
-        <article class="timeline-item relative pl-12">
-          <div class="absolute left-0 top-0 z-10 flex h-10 w-10 items-center justify-center rounded-full border-4 border-blue-200 bg-blue-800 text-white">
-            <i class="fas fa-briefcase text-sm"></i>
+
+        <div class="relative timeline-item pl-12 fade-in">
+          <div class="absolute left-0 top-0 w-9 h-9 rounded-full bg-blue-800 border-4 border-blue-200 flex items-center justify-center">
+            <i class="fas fa-briefcase text-white text-sm"></i>
           </div>
-          <div class="card-hover rounded-xl bg-white p-6 shadow-md">
-            <div class="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-center">
+          <div class="bg-white p-6 rounded-2xl shadow-md card-hover">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
               <h3 class="text-xl font-black text-blue-900">Security Officer</h3>
-              <span class="inline-flex w-fit items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-bold text-blue-800">
-                <i class="fas fa-circle mr-2 text-xs"></i> Current
+              <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-black mt-2 md:mt-0">
+                <i class="fas fa-circle text-xs mr-1"></i> Current
               </span>
             </div>
-            <p class="mb-2 text-lg font-bold text-gray-700"><i class="fas fa-building mr-2 text-blue-500"></i>Chase Security – Minneapolis-Saint Paul, MN</p>
-            <p class="mb-4 text-gray-600"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>July 2024 – Present</p>
+            <h4 class="text-lg font-bold text-gray-700 mb-2"><i class="fas fa-building mr-2 text-blue-500"></i>Chase Security – Minneapolis-Saint Paul, MN</h4>
+            <p class="text-gray-600 mb-4"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>July 2024 – Present</p>
             <ul class="space-y-3 text-gray-700">
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Enforce property rules and monitor premises to deter theft, vandalism, and unauthorized access.</li>
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Perform routine patrols to secure property and identify safety concerns before they escalate.</li>
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Respond to incidents and emergencies with composure, quick judgment, and professional reporting.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Enforce property rules and monitor premises to deter theft, vandalism, and unauthorized access.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Perform routine patrols to secure property and identify safety concerns before they escalate.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Respond to incidents and emergencies with composure, quick judgment, and detailed documentation.</li>
             </ul>
           </div>
-        </article>
+        </div>
 
-        <article class="timeline-item relative pl-12">
-          <div class="absolute left-0 top-0 z-10 flex h-10 w-10 items-center justify-center rounded-full border-4 border-blue-200 bg-blue-600 text-white">
-            <i class="fas fa-shield-alt text-sm"></i>
+        <div class="relative timeline-item pl-12 fade-in">
+          <div class="absolute left-0 top-0 w-9 h-9 rounded-full bg-blue-600 border-4 border-blue-200 flex items-center justify-center">
+            <i class="fas fa-shield-alt text-white text-sm"></i>
           </div>
-          <div class="card-hover rounded-xl bg-white p-6 shadow-md">
-            <h3 class="mb-2 text-xl font-black text-blue-900">Security Officer</h3>
-            <p class="mb-2 text-lg font-bold text-gray-700"><i class="fas fa-building mr-2 text-blue-500"></i>Per Mar Security Services – Minneapolis, MN</p>
-            <p class="mb-4 text-gray-600"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>October 2023 – July 2024</p>
+          <div class="bg-white p-6 rounded-2xl shadow-md card-hover">
+            <h3 class="text-xl font-black text-blue-900 mb-2">Security Officer</h3>
+            <h4 class="text-lg font-bold text-gray-700 mb-2"><i class="fas fa-building mr-2 text-blue-500"></i>Per Mar Security Services – Minneapolis, MN</h4>
+            <p class="text-gray-600 mb-4"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>October 2023 – July 2024</p>
             <ul class="space-y-3 text-gray-700">
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Performed security checks on doors, windows, and gates to maintain property integrity.</li>
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Escalated safety concerns and suspicious activity to law enforcement when needed.</li>
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Delivered excellent customer service while upholding safety protocols.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Performed security checks on doors, windows, and gates to maintain property integrity.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Escalated safety concerns and suspicious activity to law enforcement when needed.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Delivered excellent customer service while upholding safety protocols.</li>
             </ul>
           </div>
-        </article>
+        </div>
 
-        <article class="timeline-item relative pl-12">
-          <div class="absolute left-0 top-0 z-10 flex h-10 w-10 items-center justify-center rounded-full border-4 border-blue-200 bg-blue-600 text-white">
-            <i class="fas fa-hospital text-sm"></i>
+        <div class="relative timeline-item pl-12 fade-in">
+          <div class="absolute left-0 top-0 w-9 h-9 rounded-full bg-blue-600 border-4 border-blue-200 flex items-center justify-center">
+            <i class="fas fa-hospital text-white text-sm"></i>
           </div>
-          <div class="card-hover rounded-xl bg-white p-6 shadow-md">
-            <h3 class="mb-2 text-xl font-black text-blue-900">Security Officer</h3>
-            <p class="mb-2 text-lg font-bold text-gray-700"><i class="fas fa-building mr-2 text-blue-500"></i>North Memorial Health – Robbinsdale, MN</p>
-            <p class="mb-4 text-gray-600"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>April 2023 – October 2023</p>
+          <div class="bg-white p-6 rounded-2xl shadow-md card-hover">
+            <h3 class="text-xl font-black text-blue-900 mb-2">Security Officer</h3>
+            <h4 class="text-lg font-bold text-gray-700 mb-2"><i class="fas fa-building mr-2 text-blue-500"></i>North Memorial Health – Robbinsdale, MN</h4>
+            <p class="text-gray-600 mb-4"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>April 2023 – October 2023</p>
             <ul class="space-y-3 text-gray-700">
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Patrolled hospital grounds to maintain safety of staff, patients, and visitors.</li>
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Assisted with emergency drills, incident reports, and crisis situations.</li>
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Collaborated with local police to handle disruptive individuals and safety violations.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Patrolled hospital grounds to maintain safety of staff, patients, and visitors.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Assisted with emergency drills, incident reports, and crisis situations.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Collaborated with local police to handle disruptive individuals and safety violations.</li>
             </ul>
           </div>
-        </article>
+        </div>
 
-        <article class="timeline-item relative pl-12">
-          <div class="absolute left-0 top-0 z-10 flex h-10 w-10 items-center justify-center rounded-full border-4 border-blue-200 bg-blue-600 text-white">
-            <i class="fas fa-user-tie text-sm"></i>
+        <div class="relative timeline-item pl-12 fade-in">
+          <div class="absolute left-0 top-0 w-9 h-9 rounded-full bg-blue-600 border-4 border-blue-200 flex items-center justify-center">
+            <i class="fas fa-user-tie text-white text-sm"></i>
           </div>
-          <div class="card-hover rounded-xl bg-white p-6 shadow-md">
-            <h3 class="mb-2 text-xl font-black text-blue-900">Security Supervisor / Officer</h3>
-            <p class="mb-2 text-lg font-bold text-gray-700"><i class="fas fa-building mr-2 text-blue-500"></i>Allied Universal – Lakeville, MN</p>
-            <p class="mb-4 text-gray-600"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>May 2021 – April 2023</p>
+          <div class="bg-white p-6 rounded-2xl shadow-md card-hover">
+            <h3 class="text-xl font-black text-blue-900 mb-2">Security Supervisor / Officer</h3>
+            <h4 class="text-lg font-bold text-gray-700 mb-2"><i class="fas fa-building mr-2 text-blue-500"></i>Allied Universal – Lakeville, MN</h4>
+            <p class="text-gray-600 mb-4"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>May 2021 – April 2023</p>
             <ul class="space-y-3 text-gray-700">
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Oversaw security team operations and shift coverage.</li>
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Developed patrol schedules, ensured post compliance, and managed incident documentation.</li>
-              <li><i class="fas fa-check mr-2 text-blue-700"></i>Responded to high-risk events and coordinated with emergency personnel.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Oversaw security team operations and shift coverage.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Developed patrol schedules, ensured post compliance, and managed incident documentation.</li>
+              <li><i class="fas fa-check-circle text-blue-700 mr-2"></i>Responded to high-risk events and coordinated with emergency personnel.</li>
             </ul>
           </div>
-        </article>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="bg-white py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-14 text-center">
-        <h2 class="section-title text-3xl font-black text-blue-900">Key Skills & Expertise</h2>
+  <section id="skills" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-black text-blue-900 section-title">Key Skills & Expertise</h2>
       </div>
 
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div class="card-hover rounded-xl border-t-4 border-blue-800 bg-gray-50 p-6 shadow-sm">
-          <h3 class="mb-3 text-xl font-black"><i class="fas fa-triangle-exclamation mr-2 text-blue-800"></i>Emergency Response</h3>
-          <p class="leading-relaxed text-gray-600">Able to handle incidents, conduct patrols, address security threats, and remain professional under pressure.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-50 p-6 rounded-2xl border-t-4 border-blue-800 shadow-sm card-hover fade-in">
+          <i class="fas fa-triangle-exclamation text-blue-800 text-3xl mb-4"></i>
+          <h3 class="text-xl font-black mb-3">Emergency Response</h3>
+          <p class="text-gray-600">Ability to handle high-risk incidents, conduct patrols, and respond to security threats professionally.</p>
         </div>
 
-        <div class="card-hover rounded-xl border-t-4 border-blue-800 bg-gray-50 p-6 shadow-sm">
-          <h3 class="mb-3 text-xl font-black"><i class="fas fa-hospital-user mr-2 text-blue-800"></i>Hospital Security</h3>
-          <p class="leading-relaxed text-gray-600">Experienced in healthcare security, visitor support, patient safety, and hospital policy enforcement.</p>
+        <div class="bg-gray-50 p-6 rounded-2xl border-t-4 border-blue-800 shadow-sm card-hover fade-in">
+          <i class="fas fa-hospital-user text-blue-800 text-3xl mb-4"></i>
+          <h3 class="text-xl font-black mb-3">Healthcare Security</h3>
+          <p class="text-gray-600">Experience enforcing hospital policies, supporting safety procedures, and assisting staff and visitors.</p>
         </div>
 
-        <div class="card-hover rounded-xl border-t-4 border-blue-800 bg-gray-50 p-6 shadow-sm">
-          <h3 class="mb-3 text-xl font-black"><i class="fas fa-search mr-2 text-blue-800"></i>Threat Assessment</h3>
-          <p class="leading-relaxed text-gray-600">Skilled in recognizing suspicious activity, identifying risk, and taking appropriate action before issues escalate.</p>
+        <div class="bg-gray-50 p-6 rounded-2xl border-t-4 border-blue-800 shadow-sm card-hover fade-in">
+          <i class="fas fa-search text-blue-800 text-3xl mb-4"></i>
+          <h3 class="text-xl font-black mb-3">Threat Assessment</h3>
+          <p class="text-gray-600">Skilled at identifying suspicious behavior, safety risks, and potential security concerns.</p>
         </div>
 
-        <div class="card-hover rounded-xl border-t-4 border-blue-800 bg-gray-50 p-6 shadow-sm">
-          <h3 class="mb-3 text-xl font-black"><i class="fas fa-video mr-2 text-blue-800"></i>Surveillance Systems</h3>
-          <p class="leading-relaxed text-gray-600">Knowledgeable in CCTV monitoring, access control, radio communication, and incident documentation.</p>
+        <div class="bg-gray-50 p-6 rounded-2xl border-t-4 border-blue-800 shadow-sm card-hover fade-in">
+          <i class="fas fa-video text-blue-800 text-3xl mb-4"></i>
+          <h3 class="text-xl font-black mb-3">Surveillance Systems</h3>
+          <p class="text-gray-600">Experienced with CCTV, access control, dispatch, and accurate incident documentation.</p>
         </div>
 
-        <div class="card-hover rounded-xl border-t-4 border-blue-800 bg-gray-50 p-6 shadow-sm">
-          <h3 class="mb-3 text-xl font-black"><i class="fas fa-language mr-2 text-blue-800"></i>Bilingual Communication</h3>
-          <p class="leading-relaxed text-gray-600">Fluent in English and Spanish, allowing clear communication with diverse staff, residents, and visitors.</p>
+        <div class="bg-gray-50 p-6 rounded-2xl border-t-4 border-blue-800 shadow-sm card-hover fade-in">
+          <i class="fas fa-comments text-blue-800 text-3xl mb-4"></i>
+          <h3 class="text-xl font-black mb-3">De-escalation</h3>
+          <p class="text-gray-600">Able to communicate calmly under pressure and reduce conflict before situations escalate.</p>
         </div>
 
-        <div class="card-hover rounded-xl border-t-4 border-blue-800 bg-gray-50 p-6 shadow-sm">
-          <h3 class="mb-3 text-xl font-black"><i class="fas fa-file-alt mr-2 text-blue-800"></i>Report Writing</h3>
-          <p class="leading-relaxed text-gray-600">Experienced writing clear reports, documenting incidents, and communicating facts to supervisors or law enforcement.</p>
+        <div class="bg-gray-50 p-6 rounded-2xl border-t-4 border-blue-800 shadow-sm card-hover fade-in">
+          <i class="fas fa-language text-blue-800 text-3xl mb-4"></i>
+          <h3 class="text-xl font-black mb-3">Bilingual Communication</h3>
+          <p class="text-gray-600">Fluent in English and Spanish, supporting communication with diverse communities.</p>
         </div>
       </div>
 
-      <div class="mt-16">
-        <h3 class="mb-8 text-center text-2xl font-black">Additional Competencies</h3>
+      <div class="mt-16 fade-in">
+        <h3 class="text-2xl font-black text-center mb-8">Additional Competencies</h3>
         <div class="flex flex-wrap justify-center gap-3">
-          <span class="skill-pill rounded-full bg-blue-100 px-4 py-2 font-bold text-blue-800"><i class="fas fa-comments mr-2"></i>De-escalation</span>
-          <span class="skill-pill rounded-full bg-blue-100 px-4 py-2 font-bold text-blue-800"><i class="fas fa-walkie-talkie mr-2"></i>Radio Operation</span>
-          <span class="skill-pill rounded-full bg-blue-100 px-4 py-2 font-bold text-blue-800"><i class="fas fa-lock mr-2"></i>Access Control</span>
-          <span class="skill-pill rounded-full bg-blue-100 px-4 py-2 font-bold text-blue-800"><i class="fas fa-headset mr-2"></i>Customer Service</span>
-          <span class="skill-pill rounded-full bg-blue-100 px-4 py-2 font-bold text-blue-800"><i class="fas fa-users-cog mr-2"></i>Team Leadership</span>
-          <span class="skill-pill rounded-full bg-blue-100 px-4 py-2 font-bold text-blue-800"><i class="fas fa-fire-extinguisher mr-2"></i>Emergency Procedures</span>
+          <span class="skill-pill bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold"><i class="fas fa-fist-raised mr-2"></i>Physical Intervention</span>
+          <span class="skill-pill bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold"><i class="fas fa-comments mr-2"></i>De-escalation</span>
+          <span class="skill-pill bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold"><i class="fas fa-file-alt mr-2"></i>Report Writing</span>
+          <span class="skill-pill bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold"><i class="fas fa-search-plus mr-2"></i>Investigations</span>
+          <span class="skill-pill bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold"><i class="fas fa-walkie-talkie mr-2"></i>Radio Operation</span>
+          <span class="skill-pill bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold"><i class="fas fa-lock mr-2"></i>Access Control</span>
+          <span class="skill-pill bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold"><i class="fas fa-headset mr-2"></i>Customer Service</span>
+          <span class="skill-pill bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold"><i class="fas fa-users-cog mr-2"></i>Team Leadership</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="bg-gray-50 py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-14 text-center">
-        <h2 class="section-title text-3xl font-black text-blue-900">Get In Touch</h2>
+  <section id="contact" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-black text-blue-900 section-title">Get In Touch</h2>
       </div>
 
-      <div class="mx-auto max-w-3xl rounded-2xl bg-white p-8 shadow-md">
-        <h3 class="mb-8 text-2xl font-black text-gray-900">Contact Information</h3>
+      <div class="max-w-3xl mx-auto bg-white p-8 rounded-3xl shadow-xl card-hover fade-in">
+        <h3 class="text-2xl font-black mb-6 text-center">Contact Information</h3>
 
-        <div class="space-y-6">
-          <div class="flex items-start">
-            <div class="mr-4 rounded-full bg-blue-100 p-3 text-blue-800"><i class="fas fa-map-marker-alt"></i></div>
-            <div>
-              <h4 class="text-lg font-bold">Location</h4>
-              <p class="text-gray-600">Saint Paul, MN 55101</p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-blue-50 rounded-2xl p-5 text-center">
+            <i class="fas fa-map-marker-alt text-blue-800 text-2xl mb-3"></i>
+            <h4 class="font-black text-lg">Location</h4>
+            <p class="text-gray-600">Saint Paul, MN 55101</p>
           </div>
 
-          <div class="flex items-start">
-            <div class="mr-4 rounded-full bg-blue-100 p-3 text-blue-800"><i class="fas fa-envelope"></i></div>
-            <div>
-              <h4 class="text-lg font-bold">Email</h4>
-              <a href="mailto:pauloviruet@gmail.com" class="text-gray-600 transition hover:text-blue-800">pauloviruet@gmail.com</a>
-            </div>
-          </div>
+          <a href="mailto:pauloviruet@gmail.com" class="bg-blue-50 rounded-2xl p-5 text-center hover:bg-blue-100 transition">
+            <i class="fas fa-envelope text-blue-800 text-2xl mb-3"></i>
+            <h4 class="font-black text-lg">Email</h4>
+            <p class="text-gray-600 break-all">pauloviruet@gmail.com</p>
+          </a>
 
-          <div class="flex items-start">
-            <div class="mr-4 rounded-full bg-blue-100 p-3 text-blue-800"><i class="fas fa-phone-alt"></i></div>
-            <div>
-              <h4 class="text-lg font-bold">Phone</h4>
-              <a href="tel:+17738199901" class="text-gray-600 transition hover:text-blue-800">(773) 819-9901</a>
-            </div>
-          </div>
+          <a href="tel:+17738199901" class="bg-blue-50 rounded-2xl p-5 text-center hover:bg-blue-100 transition">
+            <i class="fas fa-phone-alt text-blue-800 text-2xl mb-3"></i>
+            <h4 class="font-black text-lg">Phone</h4>
+            <p class="text-gray-600">(773) 819-9901</p>
+          </a>
         </div>
 
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="mailto:pauloviruet@gmail.com" class="inline-flex flex-1 items-center justify-center rounded-lg bg-blue-800 px-6 py-3 font-bold text-white transition hover:bg-blue-700">
-            <i class="fas fa-envelope mr-2"></i>Email Me
-          </a>
-          <a href="https://www.linkedin.com/in/paulo-viruet/" target="_blank" rel="noopener noreferrer" class="inline-flex flex-1 items-center justify-center rounded-lg border-2 border-blue-800 px-6 py-3 font-bold text-blue-800 transition hover:bg-blue-50">
-            <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+        <div class="text-center mt-8">
+          <a href="https://www.linkedin.com/in/paulo-viruet/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-blue-800 text-white px-7 py-3 rounded-xl font-black hover:bg-blue-700 transition shadow-lg">
+            <i class="fab fa-linkedin-in mr-2"></i> View LinkedIn
           </a>
         </div>
       </div>
@@ -503,12 +525,12 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-950 py-10 text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+  <footer class="bg-blue-950 text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="flex items-center">
-          <div class="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-blue-800">
-            <i class="fas fa-shield-alt text-xl"></i>
+          <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center mr-4">
+            <i class="fas fa-shield-alt text-blue-800 text-xl"></i>
           </div>
           <div>
             <h3 class="text-2xl font-black">Paulo Viruet</h3>
@@ -517,83 +539,103 @@
         </div>
 
         <div class="flex flex-wrap justify-center gap-5 font-bold">
-          <a href="#home" class="hover:text-blue-300">Home</a>
-          <a href="#about" class="hover:text-blue-300">About</a>
-          <a href="#experience" class="hover:text-blue-300">Experience</a>
-          <a href="#skills" class="hover:text-blue-300">Skills</a>
-          <a href="#contact" class="hover:text-blue-300">Contact</a>
+          <a href="#home" class="hover:text-blue-300 transition">Home</a>
+          <a href="#about" class="hover:text-blue-300 transition">About</a>
+          <a href="#experience" class="hover:text-blue-300 transition">Experience</a>
+          <a href="#skills" class="hover:text-blue-300 transition">Skills</a>
+          <a href="#contact" class="hover:text-blue-300 transition">Contact</a>
         </div>
       </div>
 
-      <div class="mt-8 border-t border-blue-900 pt-6 text-center text-blue-200 md:text-left">
-        <p>&copy; 2026 Paulo Viruet. All rights reserved.</p>
+      <div class="border-t border-blue-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-blue-200">&copy; 2026 Paulo Viruet. All rights reserved.</p>
+        <a href="https://www.linkedin.com/in/paulo-viruet/" target="_blank" rel="noopener noreferrer" class="text-blue-200 hover:text-white transition">
+          <i class="fab fa-linkedin-in text-2xl"></i>
+        </a>
       </div>
     </div>
   </footer>
 
-  <button id="back-to-top" class="invisible fixed bottom-8 right-8 flex h-12 w-12 items-center justify-center rounded-full bg-blue-800 text-white opacity-0 shadow-lg transition hover:bg-blue-700" aria-label="Back to top">
+  <!-- Back to Top -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-800 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition opacity-0 invisible hover:bg-blue-700" aria-label="Back to top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
   <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const backToTopButton = document.getElementById('back-to-top');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const backToTopButton = document.getElementById("back-to-top");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section");
+    const fadeItems = document.querySelectorAll(".fade-in");
 
-    menuToggle.addEventListener('click', () => {
-      const isHidden = mobileMenu.classList.toggle('hidden');
-      menuToggle.setAttribute('aria-expanded', String(!isHidden));
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      const icon = menuToggle.querySelector("i");
+      icon.classList.toggle("fa-bars");
+      icon.classList.toggle("fa-times");
     });
 
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (event) => {
-        const targetId = anchor.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (!targetElement) return;
-
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener("click", event => {
         event.preventDefault();
-        mobileMenu.classList.add('hidden');
-        menuToggle.setAttribute('aria-expanded', 'false');
 
-        window.scrollTo({
-          top: targetElement.offsetTop - 84,
-          behavior: 'smooth'
-        });
+        if (!mobileMenu.classList.contains("hidden")) {
+          mobileMenu.classList.add("hidden");
+          const icon = menuToggle.querySelector("i");
+          icon.classList.add("fa-bars");
+          icon.classList.remove("fa-times");
+        }
+
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 82,
+            behavior: "smooth"
+          });
+        }
       });
     });
 
     function updateActiveNav() {
-      let currentSection = 'home';
+      let currentSection = "home";
 
-      sections.forEach((section) => {
+      sections.forEach(section => {
         const sectionTop = section.offsetTop - 120;
-        const sectionBottom = sectionTop + section.offsetHeight;
+        const sectionHeight = section.offsetHeight;
 
-        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
           currentSection = section.id;
         }
       });
 
-      navLinks.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${currentSection}`);
+      navLinks.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + currentSection);
       });
 
       if (window.scrollY > 300) {
-        backToTopButton.classList.remove('opacity-0', 'invisible');
-        backToTopButton.classList.add('opacity-100', 'visible');
+        backToTopButton.classList.remove("opacity-0", "invisible");
+        backToTopButton.classList.add("opacity-100", "visible");
       } else {
-        backToTopButton.classList.remove('opacity-100', 'visible');
-        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove("opacity-100", "visible");
+        backToTopButton.classList.add("opacity-0", "invisible");
       }
     }
 
-    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
 
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    fadeItems.forEach(item => observer.observe(item));
+
+    window.addEventListener("scroll", updateActiveNav, { passive: true });
+
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     updateActiveNav();
